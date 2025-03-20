@@ -1,0 +1,5 @@
+*NODES
+1 0 0
+2 3 4
+*ELEMENTS
+1 1 2
