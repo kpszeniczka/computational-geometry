@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
-import point, element, util, visualization
+import util, visualization, unittest
+from point import Point
+from element import Element
 
 
 def main():
@@ -9,10 +11,7 @@ def main():
 
     nodes, elements = util.load_file(filename)
 
-    print(elements[0].line())
-
     visualization.plotter(nodes, elements)
-    
 
 if __name__ == "__main__":
     main()
