@@ -124,3 +124,29 @@ class Visualization:
                 
                 self.ax.plot(x_vals, y_vals, color=color, 
                             linewidth=linewidth, zorder=3)
+    def adjust_plot_for_points(self, extra_points=None, padding=1):
+        if self.ax is None:
+            print("No plot available. Call plot() first.")
+            return
+            
+        x_vals = [node.x for node in self.nodes]
+        y_vals = [node.y for node in self.nodes]
+        
+        if extra_points:
+            for point in extra_points:
+                if hasattr(point, 'x') and hasattr(point, 'y'):
+                    x_vals.append(point.x)
+                    y_vals.append(point.y)
+                elif isinstance(point, (list, tuple)) and len(point) >= 2:
+                    x_vals.append(point[0])
+                    y_vals.append(point[1])
+        
+        x_min, x_max = min(x_vals) - padding, max(x_vals) + padding
+        y_min, y_max = min(y_vals) - padding, max(y_vals) + padding
+        
+        self.ax.set_xlim(x_min, x_max)
+        self.ax.set_ylim(y_min, y_max)
+
+        self.ax.grid(True, linestyle=self.gridstyle, alpha=self.gridalpha)
+        
+        return self.ax
