@@ -5,7 +5,7 @@ def load_file(filename):
     nodes = []
     elements = []
     
-    with open(filename, 'r') as file:
+    with open("./input/" + filename, 'r') as file:
         node_section = False
         element_section = False
         for line in file:

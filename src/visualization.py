@@ -77,7 +77,7 @@ class Visualization:
     
     def save(self, filename, dpi=300):
         if self.fig is not None:
-            self.fig.savefig(filename, dpi=dpi, bbox_inches='tight')
+            self.fig.savefig("./pictures/" + filename, dpi=dpi, bbox_inches='tight')
             print(f"Figure saved to {filename}")
         else:
             print("No figure to save. Call plot() first.")
